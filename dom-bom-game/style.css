@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f4f4;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #222;
+}
+
+.game {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* --cell is set from JS (the CELL_SIZE constant), so the size is defined in one place */
+.field {
+    position: relative;          /* ships are positioned inside the field */
+    overflow: hidden;            /* ships above the field (not yet descended) are hidden */
+    border: 3px solid #222;
+    background-color: #fff;
+    background-image:
+        linear-gradient(#e3e3e3 1px, transparent 1px),
+        linear-gradient(90deg, #e3e3e3 1px, transparent 1px);
+    background-size: var(--cell) var(--cell);
+    box-sizing: content-box;
+}
+
+.field--hit-wall {
+    animation: wall 0.15s;
+}
+
+@keyframes wall {
+    50% { border-color: #e33; }
+}
+
+/* Every ship is a plain square div */
+.ship {
+    position: absolute;
+    border: 1px solid rgba(0, 0, 0, 0.35);
+    transition: top 0.15s linear, left 0.08s linear;
+}
+
+.ship--destroyed {
+    animation: boom 0.3s forwards;
+}
+
+@keyframes boom {
+    to {
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
+
+/* Shot beam */
+.beam {
+    position: absolute;
+    width: 4px;
+    background: linear-gradient(#ff2d2d, #ffd400);
+    box-shadow: 0 0 6px #ff7b00;
+    animation: beam-fade 0.15s forwards;
+    pointer-events: none;
+}
+
+@keyframes beam-fade {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.panel {
+    width: 240px;
+    padding-top: 60px;
+}
+
+.hud {
+    margin: 0 0 8px;
+    font-size: 28px;
+}
+
+.message {
+    min-height: 48px;
+    margin: 16px 0;
+    color: #555;
+}
+
+.message--error {
+    color: #c00;
+    font-weight: bold;
+}
+
+.start-form {
+    padding: 16px;
+    border: 3px solid #222;
+    text-align: center;
+}
+
+.start-form label {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 24px;
+}
+
+.start-form select {
+    font-size: 20px;
+    margin-left: 8px;
+}
+
+.start-form button {
+    padding: 4px 28px;
+    border: none;
+    border-radius: 12px;
+    background: #0a84e0;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.help {
+    margin-top: 16px;
+    color: #777;
+    font-size: 14px;
+}

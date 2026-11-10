@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DomBomGame — tests</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { display: block; padding: 24px; }
+        .app { display: none; }               /* the game markup is needed by game.js but not shown */
+        #summary { font-size: 22px; font-weight: bold; }
+        #summary.ok { color: #1a7f37; }
+        #summary.fail { color: #c00; }
+        #results { font-family: Consolas, monospace; font-size: 14px; line-height: 1.6; }
+        .pass::before { content: "PASS  "; color: #1a7f37; font-weight: bold; }
+        .fail::before { content: "FAIL  "; color: #c00; font-weight: bold; }
+        .fail small { display: block; color: #c00; margin-left: 48px; }
+    </style>
+</head>
+<body>
+    <h1>DomBomGame — automated tests</h1>
+    <p id="summary">Running…</p>
+    <ol id="results"></ol>
+
+    <!-- The same markup as index.html: game.js looks these elements up on load -->
+    <div class="app">
+        <div id="field"></div>
+        <span id="score"></span><span id="speed"></span><p id="message"></p>
+        <form id="start-form"><select id="speed-select"></select><button id="start-btn">Start</button></form>
+    </div>
+
+    <script src="game.js"></script>
+    <script src="game.test.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DomBomGame — HomeTask #4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="game">
+        <!-- Game field: everything inside it (ships, beams) is created by JavaScript via the DOM -->
+        <div id="field" class="field" aria-label="Game field"></div>
+
+        <aside class="panel">
+            <!-- Scoreboard -->
+            <p class="hud" aria-live="polite">Score: <span id="score">0</span></p>
+            <p class="hud" aria-live="polite">Speed: <span id="speed">05</span></p>
+            <p id="message" class="message" aria-live="polite">Choose a speed and press Start</p>
+
+            <!-- Speed form (the <option> elements are added by JS) -->
+            <form id="start-form" class="start-form">
+                <label>
+                    Speed
+                    <select id="speed-select" name="speed"></select>
+                </label>
+                <button type="submit" id="start-btn">Start</button>
+            </form>
+
+            <p class="help">
+                ← → (or A / D) — move<br>
+                Space — shoot<br>
+                P — pause
+            </p>
+        </aside>
+    </main>
+
+    <script src="game.js"></script>
+</body>
+</html>
