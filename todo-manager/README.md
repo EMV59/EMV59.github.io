@@ -92,17 +92,12 @@ Tasks are objects stored in an array:
 
 ## Challenges encountered
 
-- **Unique ids.** Using `tasks.length + 1` breaks after a removal: with tasks 1, 2, 3, removing task 2 and adding a new task gives id 3 twice. I solved it with a `nextId` counter in module scope that only grows. After an import it continues from the biggest imported id.
-- **Removing from an array.** `splice` needs an index, not an id. `findIndex` returns `-1` when nothing matches, and that case must be checked first: `splice(-1, 1)` would silently remove the **last** task.
-- **Safe import.** `JSON.parse` throws an error on broken text, so it is wrapped in `try...catch`. Every item is checked **before** the list is replaced, so one bad task cannot leave the list half-imported.
-- **Date validation.** `new Date('2026-02-30')` does not fail; JavaScript rolls it over to March 2. To catch this, the date is converted back to a string and compared with the input.
-- **Sorting without changing the list.** `sort()` changes the array it is called on, so I sort a copy (`[...tasks].sort(...)`).
-- **Reading console input.** `readline.question()` lost lines when input was piped in. Reading lines through the async iterator of `readline` keeps them in a queue.
+- Keeping ids unique after a task is removed.
+- Handling invalid JSON on import without breaking the program.
+- Checking that a due date is a real date.
 
 ## Lessons learned
 
-- How an array of objects works as a small in-memory database, and which array method fits which job: `push` to add, `find` / `findIndex` to locate, `splice` to remove, `filter` to search and count, `map` to transform, `reduce` to compute a single value (the biggest id).
-- Scope: `tasks` and `nextId` live at module level and are shared by all functions, while each function keeps its own local variables.
-- `JSON.stringify` and `JSON.parse` turn data into text and back, which is the basis for saving data or sending it over the network.
-- Validate input at the start of every function and return early. This keeps the main logic simple.
-- Returning values (`task`, `null`, `true` / `false`) instead of only printing makes functions reusable and testable. The 13 automated tests caught mistakes faster than checking the output by hand.
+- Which array method fits which job: `push`, `find`, `splice`, `filter`, `map`.
+- How to save and load data with `JSON.stringify` and `JSON.parse`.
+- Why it is important to validate user input.
