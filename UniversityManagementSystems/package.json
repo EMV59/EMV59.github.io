@@ -1,0 +1,21 @@
+{
+  "name": "university-management-systems",
+  "version": "1.0.0",
+  "description": "SoftServe JS/TS Session 09 homework: university management system architecture in TypeScript",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "tsx main.ts",
+    "play": "tsx interactive.ts",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc -p tsconfig.build.json",
+    "start:js": "node dist/main.js",
+    "test": "tsx --test tests/*.test.ts",
+    "check": "npm run typecheck && npm test && npm start"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
