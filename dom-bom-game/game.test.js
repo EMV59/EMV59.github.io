@@ -368,8 +368,14 @@ test('Start restarts the game: score 0, wave 1, a fresh fleet', () => {
     g.stop();
 });
 
-test('no canvas is used anywhere', () => {
-    assertEqual(document.querySelectorAll('canvas').length, 0);
+test('the game field is built only from DOM div elements', () => {
+    const g = makeGame();
+    g.start(5); g.stop(); g.isRunning = true;
+    g.fleet.ships.forEach((s) => s.moveBy(0, 6));
+    g.shoot();                                       // adds a beam too
+    const tags = new Set([...g.field.children].map((el) => el.tagName));
+    assertEqual([...tags], ['DIV']);
+    g.stop();
 });
 
 /* ---------- Runner ---------- */

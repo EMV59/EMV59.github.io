@@ -2,7 +2,7 @@
 
 /* ==========================================================================
    HomeTask #4: {Objects, Events, Exceptions}
-   "DomBomGame" — built with the DOM only (div elements), no canvas.
+   "DomBomGame" — built with the DOM (div elements).
    ========================================================================== */
 
 /* ---------- 1. CONSTANTS (all game settings in one place) ---------- */

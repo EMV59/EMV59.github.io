@@ -3,7 +3,7 @@
 A browser game written in plain JavaScript.
 Homework project for **JavaScript for Bazaarvoice — HomeTask #4 {Objects, Events, Exceptions}**.
 
-The whole game is built with the **DOM**: every ship, the beam and the speed options are `div`/`option` elements created by JavaScript. No `canvas` is used.
+The whole game is built with the **DOM**: every ship, the beam and the speed options are `div`/`option` elements created by JavaScript.
 
 ![Gameplay](screenshots/02-gameplay-shot.png)
 
