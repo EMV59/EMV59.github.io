@@ -2,8 +2,6 @@
 
 Homework for **SoftServe JS/TS Session 09**: classes and access modifiers, encapsulation, abstract classes, interfaces, generics and three kinds of relationships between classes — inheritance, composition and aggregation — plus the generic repository pattern.
 
-All four optional extensions are implemented as well.
-
 ## How to run
 
 You need [Node.js](https://nodejs.org/) 18 or newer.
